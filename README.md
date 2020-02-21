@@ -1,8 +1,5 @@
-# De-archivizing Dickinson’s Birds:  Sound Notes from the Shores of the Anthropocene
+# Dickinson's Birds: A Public Listening Project
 
-+ Image
-+ Project Blurb
-+ Project Team
-
+_forthcoming_
 
 
