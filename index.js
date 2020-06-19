@@ -1,4 +1,10 @@
 
+
+// Steps:
+// Learn how to:
+// 1. place markers for movements -- sender / recipient
+// 2. differentiate sent markers from recipient markers
+
 var map = L.map('mapid'),
     emily = {
         name: 'Emily Dickinson',
@@ -6,11 +12,57 @@ var map = L.map('mapid'),
             lat:  42.376448,
             lng: -72.513842
         }
+    },
+    gilbert = {
+        name: 'Susan Gilbert',
+        gps: {
+            lat:  42.476448,
+            lng: -72.713842
+        }
+    },
+    joey = {
+        name: 'Joey Mcdonald',
+        gps: {
+            lat:  42.376448,
+            lng: -72.713842
+        }
     };
+
+var movements = [
+    {
+        manuscript_id: '123asf',
+        date: '1880-02-20',
+        sender: emily,
+        recipient: gilbert
+    },
+    {
+        manuscript_id: 'asdf13',
+        date: '1883-10-15',
+        sender: emily,
+        recipient: gilbert
+    },
+    {
+        manuscript_id: 'F123f',
+        date: '1884-04-20',
+        sender: emily,
+        recipient: gilbert
+    },
+    {
+        manuscript_id: 'ads!@#!@',
+        date: '1882-04-20',
+        sender: emily,
+        recipient: joey
+    }
+];
+
 
 initMap();
 drawMarker(emily.gps, {title: emily.name});
 
+movements.forEach(function(movement) {
+    console.log(movement);
+    //drawMarker(emily.gps, {title: emily.name})
+});
 
 fetch('https://birds.adagia.org/api/map-data').then(response => response.json())
     .then(data => {
@@ -37,7 +89,7 @@ function initMap() {
         accessToken: 'pk.eyJ1IjoiaWNoYmluYWJlIiwiYSI6ImNrYmI1Ymo4YjAxNDIydnQ3OHZra2Ryd24ifQ.0iaMyfT8z65OY1F-qDd98w'
     }).addTo(map)
 
-    map.setView([emily.gps.lat, emily.gps.lng], 13);
+    map.setView([emily.gps.lat, emily.gps.lng], 21);
 }
 
 function drawMarker(gpsCoordinates, options) {
